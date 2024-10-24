@@ -1,5 +1,5 @@
 from faker import Faker
-from random import random
+from random import randint
 fake = Faker()
 
 
@@ -11,13 +11,13 @@ class Worker:
         self.since = since
 
     def __str__(self):
-        return f'{self.name} {self.address} {self.experience} {self.since}'
+        return f'{self.name:<20} {self.address:20} {self.experience:<3} {self.since:<10}'
 
 
 def get_employees():
     workers = []
     for i in range(10):
         worker = Worker(fake.name(), fake.address(),
-                        random()*10, fake.date())
+                        randint(1, 7)*3, fake.date())
         print(worker)
         workers.append(worker)
